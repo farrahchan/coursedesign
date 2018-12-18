@@ -5,7 +5,7 @@ package com.chan.spider11;
  *
  */
 
-public class Film {
+public class Film implements Comparable<Film> {
 	
 	/**
 	 * 影片标题
@@ -41,11 +41,30 @@ public class Film {
 	 * 影片介绍
 	 */
 	String quote;
+	
+	/**
+	 * 导出为CSV文件
+	 * @return
+	 */
+	public String toCSV() {
+		return String.format("%d,%s,%d,%.1f\n", 
+				id,
+				title,
+				num,
+				rating
+				);
+	}
 
 	@Override
 	public String toString() {
 		return "Film [title=" + title + ", info=" + info + ", rating=" + rating + ", num=" + num + ", id=" + id
 				+ ", poster=" + poster + ", quote=" + quote + "]";
+	}
+
+	@Override
+	public int compareTo(Film o) {
+		// TODO Auto-generated method stub
+		return id - o.id;
 	}
 	
 	
