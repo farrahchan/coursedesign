@@ -8,37 +8,37 @@ package com.chan.spider11;
 public class Film {
 	
 	/**
-	 * 影片名称
+	 * 褰辩墖鏍囬
 	 */
 	String title;
 	
 	/**
-	 * 相关信息
+	 *瀵兼紨
 	 */
 	String info;
 	
 	/**
-	 * 评分
+	 * 褰辩墖璇勫垎
 	 */
 	double rating;
 	
 	/**
-	 * 评分人数
+	 * 璇勫垎浜烘暟
 	 */
 	int num;
 	
 	/**
-	 * 影片排名
+	 * 褰辩墖鎺掑悕
 	 */
 	int id;
 	
 	/**
-	 * 海报 
+	 * 娴锋姤
 	 */
 	String poster;
 	
 	/**
-	 * 
+	 * 褰辩墖浠嬬粛
 	 */
 	String quote;
 
