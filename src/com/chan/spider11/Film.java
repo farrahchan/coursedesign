@@ -20,7 +20,7 @@ public class Film {
 	/**
 	 * 评分
 	 */
-	String rating;
+	double rating;
 	
 	/**
 	 * 评分人数
@@ -41,6 +41,12 @@ public class Film {
 	 * 
 	 */
 	String quote;
+
+	@Override
+	public String toString() {
+		return "Film [title=" + title + ", info=" + info + ", rating=" + rating + ", num=" + num + ", id=" + id
+				+ ", poster=" + poster + ", quote=" + quote + "]";
+	}
 	
 	
 

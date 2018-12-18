@@ -7,37 +7,49 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
 
 public class App {
 	
 	 // alt +/
 	public static void main(String[] args) {
 		
-		//目标
+		//目锟斤拷
 		String url="https://movie.douban.com/top250";
 		
-		//使用 Jsoup 抓取文档
+		//使锟斤拷 Jsoup 抓取锟侥碉拷
 		
 		try {
 			Document doc = Jsoup.connect(url).get();
 			
 			Elements es = doc.select(".grid_view .item");
-			System.out.println(es.size());
+			//System.out.println(es.size());
 			
-			//创建一个存储影片的列表
+			//锟斤拷锟斤拷一锟斤拷锟芥储影片锟斤拷锟叫憋拷
 			ArrayList<Film> list = new ArrayList<>();
 		
 			for(Element e : es) {
 				Film f = new Film();
-				//每一部影片
+				//每一锟斤拷影片
+				f.id = Integer.parseInt(e.select(".pic em").first().text());
+				f.poster = e.select("img").first().attr("src");
+				f.info = e.select(".bd p").first().text();
+				f.title = e.select(".title").first().text();
+				f.rating = Double.parseDouble(e.select(".rating_num").first().text());
+				String num = e.select(".star span").last().text();
+				f.num = Integer.parseInt(num.substring(0, num.length() - 3));
+				f.quote = e.select(".inq").first().text();
+				
+				System.out.println(f);
+				
+				/*
 				Element t= e.select(".title").first();
 				String num = e.select(".star span").last().text();
 				System.out.println(t.text()+"," + num);
 				
 //				f.id
-//				f.title
+//				f.title*/
 				list.add(f);
+			
 			}
 			
 //			String title=doc.title();
