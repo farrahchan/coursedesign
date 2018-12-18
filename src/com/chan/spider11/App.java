@@ -27,10 +27,28 @@ public class App {
 		ArrayList<Film> list = new ArrayList<>();
 		String url = "https://movie.douban.com/top250?start=";
 		
-		for(int i = 0; i <= 10; i++) {
+		for(int i = 0; i <= 9; i++) {
 			String path = String.format("%s%d", url, i*25); 
 			pool.submit(new Spider(path, list));
 		}
+		
+		/**
+		 * 程序运行结束 红色图标变灰
+		 */
+		pool.shutdown();
+		System.out.println(pool.isTerminated());
+		
+		while(!pool.isTerminated()) {
+			
+			//延时
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println(list.size());
 	}
-
 }

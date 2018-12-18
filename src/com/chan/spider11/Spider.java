@@ -72,7 +72,7 @@ public class Spider implements Runnable {
 				
 				System.out.println(name + ":" + f);
 				list.add(f);
-				System.out.println(name + "线程，完成： " + url);
+				//System.out.println(name + "线程，完成： " + url);
 			} 
 		}catch (IOException e) {
 			// TODO Auto-generated catch block
