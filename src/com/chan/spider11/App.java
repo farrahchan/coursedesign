@@ -49,29 +49,43 @@ public class App {
 			}
 		}
 		
-		//数据输出
+		//数据排序
+		
+		Collections.sort(list);
 		System.out.println(list.size());
+		
+		
+		ExecutorService pool2 = Executors.newFixedThreadPool(4);
+		
 		for(Film film : list) {
-			System.out.println(film.toCSV());
+			
+			System.out.println(film.url);
+			pool2.execute(new SpiderFilmDetail(film.url,null));
+			
 		}
+		pool2.shutdown();
 		
 		//写入文件
-		String file = "d:/film.csv"; //绝对路径
-		file = "film.csv";//相对路径
-		
-		//排序
-		Collections.sort(list,null);
-		
-		//io
-		try (FileWriter out = new FileWriter(file)) {
-			//写数据
-			for (Film film : list) {
-				out.write(film.toCSV());
-			}
-			System.out.println("ok");
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+//		String file = "d:/film.csv"; //绝对路径
+//		file = "film.csv";//相对路径
+//		
+//		//排序
+//		Collections.sort(list,null);
+//		System.out.println("list.size()");
+//		for(Film film:list) {
+//			System.out.println(film.url);
+//		}
+//		
+//		//io
+//		try (FileWriter out = new FileWriter(file)) {
+//			//写数据
+//			for (Film film : list) {
+//				out.write(film.toCSV());
+//			}
+//			System.out.println("ok");
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 		
 	}
 }
